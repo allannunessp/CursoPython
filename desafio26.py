@@ -1,0 +1,7 @@
+f = input("Digite uma Frase: ")
+l = f.lower()
+print("A leta A aparece {} ".format(l.count("a")))
+p = l.find("a")
+print("A primeira vez e que a letra A aparedce é na {} posição ".format(p))
+p = l.rfind("a")
+print("A Última  vez e que a letra A aparedce é na {} posição ".format(p))
