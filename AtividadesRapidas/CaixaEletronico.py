@@ -7,14 +7,14 @@ saldo = 500.00
 while True :
 
      op = int(input("\nQual operação deseja realizar? \
-     \n Conta Corrente: ", conta , "\
      \n1 - Saque \
      \n2 - Deposito \
      \n3 - Consulta de valor \
      \n4 - Encerrar\
+     \n5 - Consultar conta\
      \nOpção desejada: "))
 
-     if op == 1:
+     if   op == 1:
          saque = float(input("\nDiste o valor de deseja sacar: R$"))
          if saque <= 0: 
              print("o valor deve ser superior a R$0.00")
@@ -26,7 +26,6 @@ while True :
               saldo = saldo - saque
               print("O valor sacado é de R$", saque)
               print("Seu saldo restante é de R$:", saldo)
-
      elif op == 3:
          print("\nO saldo da sua é de R$", saldo)
      elif op == 2:
@@ -36,7 +35,9 @@ while True :
          else:
              saldo = saldo + deposito
              print( "\nO valor depositado é de R$",deposito ,"\nO saldo atual é de R$" , saldo)
-     elif op ==4:
+     elif op == 5:
+         print ( "\nSua conta é a: " , conta)
+     elif op == 4:
          print ("\nEstaremos encerrando as operações!")
          break
      else:
