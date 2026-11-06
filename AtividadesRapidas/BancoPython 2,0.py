@@ -30,17 +30,24 @@ while True:
     if op < 1 or op > 6:
         print("Opção inválida!")
     elif op == 1:
-        saque = float(input("\nDiste o valor de deseja sacar: R$"))
-        if saque <= 0:
-            print("o valor deve ser superior a R$0.00")
+        while True:
+            try:
+                saque = float(input("\nDiste o valor de deseja sacar: R$"))
 
-        elif saque > saldo:
+                if saque <= 0:
+                    print("o valor deve ser superior a R$0.00")
+                else:
+                    break
+
+            except ValueError:
+                print("Digite um valor numerico!")
+
+        if saque > saldo:
             print("O valor do saque é superior ao saldo atual\nOperacáo cancelada ")
 
         else:
             saldo = saldo - saque
-            historico.append(
-                f"Saque de R${saque:.2f} | Saldo restante R${saldo:.2f}")
+            historico.append(f"Saque de R${saque:.2f} | Saldo restante R${saldo:.2f}")
             print("O valor sacado é de R$", saque)
             print("Seu saldo restante é de R$:", saldo)
 
@@ -54,7 +61,8 @@ while True:
         else:
             saldo = saldo + deposito
             historico.append(
-                f"Deposito no valor de R${deposito:.2f} | Saldo restante R${saldo:.2f}")
+                f"Deposito no valor de R${deposito:.2f} | Saldo restante R${saldo:.2f}"
+            )
             print("\nO valor depositado é de R$", deposito, "\
             \nO saldo atual é de R$", saldo)
     elif op == 5:
@@ -73,4 +81,4 @@ while True:
         break
 
 
-print("\nObrigado por usar o banco Python")
+print("\nObrigado por usar o banco Python\n\n")
