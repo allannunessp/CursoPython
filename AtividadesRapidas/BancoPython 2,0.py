@@ -17,15 +17,19 @@ saldo = 500.00
 historico = []
 
 while True:
-
-    op = int(input("\nQual operação deseja realizar? \
-     \n1 - Saque \
-     \n2 - Deposito \
-     \n3 - Consulta de valor \
-     \n4 - Encerrar\
-     \n5 - Consultar conta\
-     \n6 - Consultar operações\
-     \nOpção desejada: "))
+    while True:
+        try:
+            op = int(input("\nQual operação deseja realizar? \
+                \n1 - Saque \
+                \n2 - Deposito \
+                \n3 - Consulta de valor \
+                \n4 - Encerrar\
+                \n5 - Consultar conta\
+                \n6 - Consultar operações\
+                \nOpção desejada: "))
+            break
+        except ValueError:
+            print("Digite um valor númeirco")
 
     if op < 1 or op > 6:
         print("Opção inválida!")
@@ -55,16 +59,21 @@ while True:
         print("\nO saldo da sua é de R$", saldo)
 
     elif op == 2:
-        deposito = float(input("Digite o valor que deseja depoistar R$"))
-        if deposito <= 0:
-            print("O deposito deve ser maior que R$0.00\nOperacáo cancelada")
-        else:
-            saldo = saldo + deposito
-            historico.append(
-                f"Deposito no valor de R${deposito:.2f} | Saldo restante R${saldo:.2f}"
-            )
-            print("\nO valor depositado é de R$", deposito, "\
-            \nO saldo atual é de R$", saldo)
+        while True:
+            try:
+                deposito = float(input("Digite o valor que deseja depoistar R$"))
+                if deposito <= 0:
+                    print("O deposito deve ser maior que R$0.00")
+                else:
+                    break
+            except ValueError:
+                print("Digite um valor númerico!")
+        saldo = saldo + deposito
+        historico.append(
+            f"Deposito no valor de R${deposito:.2f} | Saldo restante R${saldo:.2f}"
+        )
+        print("\nO valor depositado é de R$", deposito, "\
+                    \nO saldo atual é de R$", saldo)
     elif op == 5:
         print("\nConta em nome de : ", nome)
         print("\nSeu saldo é de R$", saldo)
