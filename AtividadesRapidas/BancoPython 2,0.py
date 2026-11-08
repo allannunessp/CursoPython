@@ -1,4 +1,4 @@
-# version 2.1
+# version 2.2
 
 print("Olá, Bem vindo ao banco Python!")
 
@@ -12,8 +12,16 @@ while True:
     except ValueError:
         print("Digite somente numeros!")
 
-
 saldo = 500.00
+
+
+def consultar_saldo():
+    print(f"Seu saldo é de R${saldo:.2f}")
+
+
+consultar_saldo()
+
+
 historico = []
 
 while True:
@@ -22,7 +30,7 @@ while True:
             op = int(input("\nQual operação deseja realizar? \
                 \n1 - Saque \
                 \n2 - Deposito \
-                \n3 - Consulta de valor \
+                \n3 - Consultar saldo \
                 \n4 - Encerrar\
                 \n5 - Consultar conta\
                 \n6 - Consultar operações\
@@ -56,8 +64,7 @@ while True:
             print("Seu saldo restante é de R$:", saldo)
 
     elif op == 3:
-        print("\nO saldo da sua é de R$", saldo)
-
+        print(f"\nSeu Saldo atual é de R${saldo:.2f}")
     elif op == 2:
         while True:
             try:
