@@ -19,7 +19,19 @@ def consultar_saldo():
     print(f"Seu saldo é de R${saldo:.2f}")
 
 
-consultar_saldo()
+def consultar_conta():
+    print(f"Titular: {nome}")
+    print(f"Número da conta: {conta}")
+
+
+def deposito_conta(a, b):
+    resultado = a + b
+    return resultado
+
+
+def saque_conta(a, b):
+    resultado = a - b
+    return resultado
 
 
 historico = []
@@ -58,13 +70,13 @@ while True:
             print("O valor do saque é superior ao saldo atual\nOperacáo cancelada ")
 
         else:
-            saldo = saldo - saque
+            saldo = saque_conta(saldo, saque)
             historico.append(f"Saque de R${saque:.2f} | Saldo restante R${saldo:.2f}")
             print("O valor sacado é de R$", saque)
             print("Seu saldo restante é de R$:", saldo)
 
     elif op == 3:
-        print(f"\nSeu Saldo atual é de R${saldo:.2f}")
+        consultar_saldo()
     elif op == 2:
         while True:
             try:
@@ -75,16 +87,14 @@ while True:
                     break
             except ValueError:
                 print("Digite um valor númerico!")
-        saldo = saldo + deposito
+        saldo = deposito_conta(deposito, saldo)
         historico.append(
             f"Deposito no valor de R${deposito:.2f} | Saldo restante R${saldo:.2f}"
         )
         print("\nO valor depositado é de R$", deposito, "\
                     \nO saldo atual é de R$", saldo)
     elif op == 5:
-        print("\nConta em nome de : ", nome)
-        print("\nSeu saldo é de R$", saldo)
-        print("\nSua conta é a: ", conta)
+        consultar_conta()
     elif op == 6:
         print("\nSuas operações: ")
         if len(historico) == 0:
