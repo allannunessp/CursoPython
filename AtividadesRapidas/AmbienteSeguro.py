@@ -1,13 +1,10 @@
-def somar(a, b):
-    resultado = a + b
-    return resultado
+def multiplicar(x, y):
+    calculo = x * y
+    return calculo
 
 
-total = somar(10, 20)
+basica = multiplicar(3, 3)
+print(basica)
 
-print(total)
-
-
-outra = somar(45, 20)
-
-print(outra)
+nbasica = multiplicar(7, 8)
+print(nbasica)
