@@ -1,4 +1,4 @@
-# version 2.2
+# version 2.5
 
 print("Olá, Bem vindo ao banco Python!")
 
@@ -15,7 +15,7 @@ while True:
 saldo = 500.00
 
 
-def consultar_saldo():
+def consultar_saldo(saldo):
     print(f"Seu saldo é de R${saldo:.2f}")
 
 
@@ -24,14 +24,18 @@ def consultar_conta():
     print(f"Número da conta: {conta}")
 
 
-def deposito_conta(a, b):
-    resultado = a + b
+def deposito_conta(saldo, valor):
+    resultado = saldo + valor
     return resultado
 
 
-def saque_conta(a, b):
-    resultado = a - b
+def saque_conta(saldo, valor):
+    resultado = saldo - valor
     return resultado
+
+
+def registrar_operacao(historico, operacao):
+    historico.append(operacao)
 
 
 historico = []
@@ -71,12 +75,14 @@ while True:
 
         else:
             saldo = saque_conta(saldo, saque)
-            historico.append(f"Saque de R${saque:.2f} | Saldo restante R${saldo:.2f}")
+            registrar_operacao(
+                historico, f"Saque de R${saque:.2f} | Saldo restante R${saldo:.2f}"
+            )
             print("O valor sacado é de R$", saque)
             print("Seu saldo restante é de R$:", saldo)
 
     elif op == 3:
-        consultar_saldo()
+        consultar_saldo(saldo)
     elif op == 2:
         while True:
             try:
@@ -87,9 +93,10 @@ while True:
                     break
             except ValueError:
                 print("Digite um valor númerico!")
-        saldo = deposito_conta(deposito, saldo)
-        historico.append(
-            f"Deposito no valor de R${deposito:.2f} | Saldo restante R${saldo:.2f}"
+        saldo = deposito_conta(saldo, deposito)
+        registrar_operacao(
+            historico,
+            f"Deposito no valor de R${deposito:.2f} | Saldo restante R${saldo:.2f}",
         )
         print("\nO valor depositado é de R$", deposito, "\
                     \nO saldo atual é de R$", saldo)
@@ -105,6 +112,5 @@ while True:
     else:
         print("\nEstaremos encerrando as operações!")
         break
-
 
 print("\nObrigado por usar o banco Python\n\n")
