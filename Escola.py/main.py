@@ -15,15 +15,9 @@ while True:
     if opcao < 1 or opcao > 3:
         print("Opção inválida")
     elif opcao == 1:
-        while True:
-            try:
-                
-
-                nome = cadastrar_aluno()
-                print(f"Aluno cadastrado: {nome}")
-                break
-            except ValueError:
-                print("Digite um nome valido")
+        nome = cadastrar_aluno()
+        print(f"Aluno cadastrado: {nome}")
+             
     elif opcao == 2:
         
 
